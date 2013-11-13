@@ -1,0 +1,13 @@
+{
+  "manifest_version": 2,
+  "name": "twitter linkify",
+  "version": "0.1",
+  "description": "Replaces @username in text with link to Twitter",
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["content_script.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
