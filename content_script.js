@@ -12,6 +12,12 @@ function processMatching(root, match, callback) {
   nodes.forEach(callback);
 }
 
+function inAnchor(node) {
+  for (var par = node; par; par = par.parentElement)
+    if (par.tagName == "A")
+      return true;
+}
+
 function linkify(node) {
   var txt = node.nodeValue,
       parts = txt.split(twitterUsername);
@@ -20,6 +26,10 @@ function linkify(node) {
   if (parts.length == 1 && parts[0] == txt) return;
 
   var par = node.parentElement;
+
+  // return if we're already in a link
+  if (inAnchor(par)) return;
+
   parts.forEach(function(txt) {
     var newNodes = [];
     if (txt.match(twitterUsername)) {
