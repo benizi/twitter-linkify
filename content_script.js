@@ -19,7 +19,7 @@ function linkify(node) {
   // nothing to do if we didn't match
   if (parts.length == 1 && parts[0] == txt) return;
 
-  var par = node.parentNode;
+  var par = node.parentElement;
   parts.forEach(function(txt) {
     var newNodes = [];
     if (txt.match(twitterUsername)) {
